@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "837796812650",
+    "firebase_url": "https://vibra-8534f-default-rtdb.firebaseio.com",
+    "project_id": "vibra-8534f",
+    "storage_bucket": "vibra-8534f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837796812650:android:7afe7210cc59e406743713",
+        "android_client_info": {
+          "package_name": "Vibra.Kirci"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcgm6Xuxj1yfbmZYg6hOhAw0grDEAm05U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
