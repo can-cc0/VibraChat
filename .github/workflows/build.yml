@@ -14,10 +14,14 @@ jobs:
         with:
           channel: 'stable'
           cache: true
-      - name: Clean and Get Dependencies
+      - name: Generate Fresh Flutter Android Project
         run: |
-          flutter clean
-          flutter pub get
+          # Mevcut eksik/bozuk android dosyalarını temizle
+          rm -rf android
+          # Yepyeni, hatasız ve v2 altyapılı bir Flutter iskeleti kur
+          flutter create . --org com.vibrachat --project-name vibrachat --platforms=android
+      - name: Get Dependencies
+        run: flutter pub get
       - name: Build APK
         run: flutter build apk --release
       - uses: actions/upload-artifact@v4
