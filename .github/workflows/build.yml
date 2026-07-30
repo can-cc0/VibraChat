@@ -5,14 +5,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: Create fresh Flutter project structure
-        run: flutter create . --org Vibra.Kirci --project-name vibrachat --platforms=android
-      - run: flutter pub get
-      - name: Build APK with verbose logging
-        run: flutter build apk --release -v
+          cache: true
+      - name: Clean and Get Dependencies
+        run: |
+          flutter clean
+          flutter pub get
+      - name: Build APK
+        run: flutter build apk --release
       - uses: actions/upload-artifact@v4
         with:
           name: release-apk
