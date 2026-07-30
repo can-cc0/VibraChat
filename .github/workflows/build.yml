@@ -10,13 +10,9 @@ jobs:
           channel: 'stable'
       - name: Create fresh Flutter project structure
         run: flutter create . --org Vibra.Kirci --project-name vibrachat --platforms=android
-      - name: Restore user files
-        run: |
-          mkdir -p android/app/
-          # Zaten yüklediğimiz dosyaları yerine koyuyoruz
-          if [ -f "backup_google-services.json" ]; then cp backup_google-services.json android/app/google-services.json; fi
       - run: flutter pub get
-      - run: flutter build apk --release
+      - name: Build APK with verbose logging
+        run: flutter build apk --release -v
       - uses: actions/upload-artifact@v4
         with:
           name: release-apk
