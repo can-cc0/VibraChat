@@ -8,8 +8,20 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+      - name: Create fresh Flutter project structure
+        run: |
+          flutter create . --org Vibra.Kirci --project-name vibrachat --platforms=android
+          mkdir -p android/app/
+          if [ -f "android/app/google-services.json" ]; then
+            cp android/app/google-services.json android/app/google-services.json
+          fi
+      - name: Copy user main.dart if exists
+        run: |
+          if [ -f "lib/main.dart" ]; then
+            cp lib/main.dart lib/main.dart
+          fi
       - run: flutter pub get
-      - run: flutter build apk --release --no-pub
+      - run: flutter build apk --release
       - uses: actions/upload-artifact@v4
         with:
           name: release-apk
